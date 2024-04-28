@@ -9,11 +9,13 @@
     </div>
     <div class="flex h-full items-start justify-center text-center lg:text-left">
       <div>
-        <h3 class="text-4xl font-semibold lg:text-7xl">Don't just take our word for it</h3>
+        <h3 class="text-4xl font-black lg:text-6xl">Don't just take our word for it</h3>
         <p class="mr-20 mt-10 text-xl text-muted-foreground">
-          Cider is the go-to choice for thousands of talented individuals (13,304 to be exact) like
-          you! Our vibrant community is at the heart of everything we do. See what some of our
-          satisfied users have to say...
+          Cider is the go-to choice for thousands of talented individuals (<kbd>{{
+            memberCount
+          }}</kbd>
+          to be exact) like you! Our vibrant community is at the heart of everything we do. See what
+          some of our satisfied users have to say...
         </p>
       </div>
     </div>
@@ -54,6 +56,7 @@
 </template>
 
 <script lang="ts" setup>
+  const memberCount = ref("13,567");
   const testimonies = [
     {
       author: "Kai",

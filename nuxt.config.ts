@@ -19,13 +19,25 @@ export default defineNuxtConfig({
     "nuxt-swiper",
   ],
   content: {
+    documentDriven: true,
+    navigation: { fields: ["icon", "label"] },
+    markdown: {
+      toc: { depth: 4, searchDepth: 4 },
+    },
     sources: {
-      github: {
+      documentation: {
         prefix: "/docs",
         driver: "github",
         repo: "ciderapp/cider-docs",
         branch: "main",
         dir: "/",
+      },
+      changelogs: {
+        prefix: "/changelogs",
+        driver: "github",
+        repo: "ciderapp/changes",
+        branch: "main",
+        dir: "/releases",
       },
     },
   },

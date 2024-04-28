@@ -18,26 +18,18 @@
     </p>
 
     <div class="mt-8 grid w-full grid-cols-1 items-center gap-3 sm:flex sm:justify-center lg:mt-10">
-      <UiButton size="lg">Download</UiButton>
-      <UiButton size="lg" variant="ghost" class="hover:gap-5">
-        Learn More <Icon name="material-symbols:arrow-right-alt-rounded" />
+      <NuxtLink to="/downloads">
+        <UiButton size="lg">Download</UiButton>
+      </NuxtLink>
+      <UiButton
+        size="lg"
+        variant="ghost"
+        class="learn-more hover:gap-5 hover:bg-transparent hover:underline"
+      >
+        Learn More <Icon name="material-symbols:arrow-right-alt-rounded" size="24px" />
       </UiButton>
     </div>
     <Carousel :images="images" />
-
-    <!-- <div
-      class="mx-auto mt-10 h-[350px] w-full overflow-hidden rounded-md lg:mt-10 lg:h-[520px] lg:w-[900px] lg:rounded-lg"
-    >
-      <iframe
-        width="100%"
-        height="100%"
-        src="https://www.youtube.com/embed/oYEtLQ3lEH0?si=fQ6bK1XLkFAQBePK"
-        :title="`${COMPANY_NAME} hero section seven video`"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-      />
-    </div> -->
   </UiContainer>
   <BuiltUsing />
   <UiContainer class="features py-16 lg:py-24">
@@ -74,12 +66,18 @@
       </template>
     </div>
   </UiContainer>
-
   <Testimonies />
 </template>
 
+<style scoped>
+  .learn-more {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    transition: gap 0.2s ease-in-out;
+  }
+</style>
+
 <script lang="ts" setup>
-  const COMPANY_NAME = "Cider";
   let images = [
     "/client-images/immersive.png",
     "/client-images/comfy.png",

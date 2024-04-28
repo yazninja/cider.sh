@@ -1,5 +1,4 @@
 <template>
-  <!-- <ConfigProvider :use-id="useIdFunction"> -->
   <div>
     <!-- <NuxtLoadingIndicator /> -->
     <NuxtLayout>
@@ -10,5 +9,4 @@
     <!-- <UiVueSonner /> -->
     <!-- <UiNotivue /> -->
   </div>
-  <!-- </ConfigProvider> -->
 </template>

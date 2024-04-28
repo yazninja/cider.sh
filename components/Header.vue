@@ -90,7 +90,7 @@
       icon: "simple-icons:github",
     },
     {
-      url: "https://x.cider.sh",
+      url: "https://x.com/useCider",
       icon: "simple-icons:x",
     },
 

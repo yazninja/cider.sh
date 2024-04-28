@@ -1,6 +1,6 @@
 <template>
   <!-- <div class="carousel" @onMouseEnter="isHovered = true" @onMouseLeave="isHovered = false"> -->
-  <div class="carousel">
+  <div class="carousel" @mouseenter="isHovered = true" @mouseleave="isHovered = false">
     <div class="images">
       <img
         v-for="(image, index) in props.images"
