@@ -102,6 +102,12 @@
 </template>
 
 <script lang="ts" setup>
+  useSeoMeta({
+    title: "Changelogs",
+    description: "Stay up to date with the latest Cider releases, news, updates, and resources.",
+    ogDescription: "Stay up to date with the latest Cider releases, news, updates, and resources.",
+    ogUrl: "https://cider.sh/changelogs",
+  });
   const headline = "Design";
   const title = "UX review presentations";
   const image =

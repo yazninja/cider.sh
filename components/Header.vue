@@ -27,10 +27,12 @@
                       :key="i"
                       class="rounded-md p-3 text-sm hover:bg-muted"
                     >
-                      <p class="mb-1 font-semibold leading-none text-foreground">
-                        {{ item.title }}
-                      </p>
-                      <p class="line-clamp-2 text-muted-foreground">{{ item.description }}</p>
+                      <NuxtLink :to="item.link">
+                        <p class="mb-1 font-semibold leading-none text-foreground">
+                          {{ item.title }}
+                        </p>
+                        <p class="line-clamp-2 text-muted-foreground">{{ item.description }}</p>
+                      </NuxtLink>
                     </li>
                   </ul>
                 </div>
@@ -38,12 +40,18 @@
             </UiNavigationMenuItem>
             <UiNavigationMenuItem>
               <UiNavigationMenuLink asChild>
-                <UiButton variant="ghost">Documentation</UiButton>
+                <UiButton variant="ghost" to="/changelogs">Changelogs</UiButton>
               </UiNavigationMenuLink>
             </UiNavigationMenuItem>
             <UiNavigationMenuItem>
               <UiNavigationMenuLink asChild>
-                <UiButton variant="ghost">Marketplace</UiButton>
+                <UiButton variant="ghost" to="/docs">Docs</UiButton>
+              </UiNavigationMenuLink>
+            </UiNavigationMenuItem>
+            <UiNavigationMenuItem>
+              <UiNavigationMenuLink asChild>
+                <UiButton variant="ghost" to="#">Marketplace</UiButton>
+                <!-- TODO: Update to https://marketplace.cider.sh when ready-->
               </UiNavigationMenuLink>
             </UiNavigationMenuItem>
           </UiNavigationMenuList>
@@ -102,16 +110,20 @@
   ];
   const beachAmenities = [
     {
-      title: "Cider Nightly",
-      description: "Experimental Cider builds that are exclusively available to our donators",
+      title: "Cider Client",
+      description: "Available for Windows, macOS, and Linux! The main Cider client.",
+      link: "/downloads",
     },
     {
-      title: "Cider Stable",
-      description: "Available for Windows, macOS, and Linux!",
+      title: "Cider Remote",
+      description: "Easily control your music from your phone or tablet.",
+      link: "/remote",
     },
     {
-      title: "Cider Classic (Deprecated)",
-      description: "The original Cider project. No longer in active development",
+      title: "Cider Connect (Coming Soon)",
+      description:
+        "Get a Cider account to sync your client settings, host and join listening parties and more.",
+      link: "#", // TODO: Update link when Connect is live
     },
   ];
   const components: { title: string; href: string; description: string }[] = [

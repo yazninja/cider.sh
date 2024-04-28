@@ -52,7 +52,17 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  useSeoMeta({
+    title: "Remote",
+    description:
+      "Take full control of your Cider instance with Remote, a native iOS & Android app.",
+    ogDescription:
+      "Take full control of your Cider instance with Remote, a native iOS & Android app.",
+    ogImage: "/client-images/remote.png",
+    ogUrl: "https://cider.sh/remote",
+  });
+</script>
 
 <style scoped lang="scss">
   .text-remote-cont {
