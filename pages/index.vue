@@ -9,7 +9,9 @@
       /></UiBadge>
     </div>
 
-    <h1 class="mb-4 mt-7 text-4xl font-bold lg:mb-6 lg:mt-5 lg:text-center lg:text-5xl xl:text-6xl">
+    <h1
+      class="mb-4 mt-7 text-4xl font-extrabold lg:mb-6 lg:mt-5 lg:text-center lg:text-5xl xl:text-6xl"
+    >
       Listening to music<br />Redefined
     </h1>
     <p class="mx-auto max-w-[760px] text-lg text-muted-foreground lg:text-center lg:text-xl">
@@ -32,10 +34,10 @@
     <Carousel :images="images" />
   </UiContainer>
   <BuiltUsing />
-  <UiContainer class="features py-16 lg:py-24">
+  <UiContainer class="features py-16 lg:p-20">
     <p class="text-center font-semibold text-primary">Features</p>
     <h2 class="mb-4 mt-3 text-center text-3xl font-semibold lg:mb-5 lg:text-4xl">
-      Built for modern music lovers
+      Built for the Modern Music Lovers
     </h2>
     <p class="mx-auto max-w-[760px] text-center text-lg text-muted-foreground lg:text-xl">
       Cider is a powerful music player that allows you listen to your favorite tracks with style.
@@ -66,6 +68,7 @@
       </template>
     </div>
   </UiContainer>
+
   <Testimonies />
 </template>
 

@@ -20,7 +20,7 @@
       "A community-ran and maintained software company focused on creating the best experience for end users. Home of Cider, Connect, Remote.",
     ogImage: "/og.png",
     twitterCard: "summary",
-    twitterSite: "@useCider",
+    twitterSite: "@UseCider",
     ogType: "website",
     ogSiteName: "Cider Collective",
     ogUrl: "https://cider.sh",

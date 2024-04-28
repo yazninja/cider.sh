@@ -41,9 +41,9 @@
       >
         <SwiperSlide v-for="t in testimonies" :key="t.author">
           <div
-            class="border border-white/20 bg-white/10 p-4 text-white backdrop-blur-lg lg:px-5 lg:py-6"
+            class="rounded-lg border border-white/20 bg-gray-500/10 p-4 text-white backdrop-blur-lg lg:px-5 lg:py-6"
           >
-            <p class="mb-5 text-xl font-semibold lg:mb-8 lg:text-3xl">“{{ t.quote }}”</p>
+            <p class="mb-5 text-xl font-semibold lg:mb-8 lg:text-2xl">“{{ t.quote }}”</p>
             <div class="mt-2 lg:mt-3">
               <p class="w-100 text-xl font-semibold">{{ t.author }}</p>
               <p>{{ t.position }}</p>
