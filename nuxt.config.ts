@@ -2,6 +2,11 @@ import tailwindTypography from "@tailwindcss/typography";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  nitro: {
+    prerender: {
+      autoSubfolderIndex: false,
+    },
+  },
   devtools: { enabled: true },
   modules: [
     "@nuxtjs/tailwindcss",
