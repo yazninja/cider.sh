@@ -90,8 +90,6 @@
 </style>
 
 <script lang="ts" setup>
-  import { isClient } from "@vueuse/core";
-
   definePageMeta({ title: "Home" });
   let data: any;
   ({ data } = await useAsyncData<any>("latest-release", async () =>
