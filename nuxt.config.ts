@@ -76,7 +76,7 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    "/": { prerender: true },
+    // "/": { prerender: true },
     // "/downloads": { prerender: true },
     // "/changelogs": { prerender: true },
     "/changelogs/**": { isr: 60 },

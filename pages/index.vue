@@ -92,7 +92,7 @@
 <script lang="ts" setup>
   definePageMeta({ title: "Home" });
   let data: any;
-  ({ data } = await useLazyAsyncData<any>("latest-release", async () =>
+  ({ data } = await useAsyncData<any>("latest-release", async () =>
     queryContent("/changelogs/client-releases").sort({ releaseNo: -1, $numeric: true }).find()
   ));
   console.log(data.value);
