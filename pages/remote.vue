@@ -53,6 +53,7 @@
 </template>
 
 <script setup lang="ts">
+  definePageMeta({ title: "Remote" });
   useSeoMeta({
     title: "Remote",
     description:

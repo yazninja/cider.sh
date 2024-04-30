@@ -4,8 +4,11 @@
   ></div>
   <UiContainer class="relative flex flex-col items-center py-10 text-center lg:py-20">
     <div>
-      <UiBadge to="#" variant="secondary" class="px-3 py-1.5 text-sm font-normal lg:py-2"
-        >Release V2.4.0 is out! <Icon class="ml-3 h-4 w-4" name="lucide:arrow-right"
+      <UiBadge
+        :to="data[0]?._path"
+        variant="secondary"
+        class="px-3 py-1.5 text-sm font-normal lg:py-2"
+        >{{ data[0]?.navigation.headline }} <Icon class="ml-3 h-4 w-4" name="lucide:arrow-right"
       /></UiBadge>
     </div>
 
@@ -81,6 +84,14 @@
 </style>
 
 <script lang="ts" setup>
+  definePageMeta({ title: "Home" });
+
+  const { data } = await useAsyncData<any>("latest-release", () =>
+    queryContent("/changelogs/client-releases").sort({ releaseNo: -1, $numeric: true }).find()
+  );
+
+  console.log(data.value);
+
   let images = [
     "/client-images/immersive.png",
     "/client-images/comfy.png",

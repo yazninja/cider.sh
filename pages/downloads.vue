@@ -103,13 +103,16 @@
 </template>
 
 <script lang="ts" setup>
-  useSeoMeta({
+  definePageMeta({
     title: "Downloads",
+  });
+  useSeoMeta({
     description: "Download Cider for Windows, macOS, and Linux",
     ogDescription: "Download Cider for Windows, macOS, and Linux",
     ogImage: "/client-images/immersive.png",
     ogUrl: "https://cider.sh/downloads",
   });
+
   useHead({
     script: [
       {

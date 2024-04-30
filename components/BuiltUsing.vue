@@ -1,7 +1,7 @@
 <template>
   <UiContainer class="py-4 lg:py-8">
     <p class="mb-8 text-center text-muted-foreground">
-      Cider was built using these amazing frameowks and libraries
+      Cider was built using these amazing frameworks and libraries
     </p>
     <div class="flex flex-wrap items-center justify-center gap-5">
       <template v-for="n in companies" :key="n.text">
