@@ -10,7 +10,7 @@
     <div class="flex h-full items-start justify-center text-center lg:text-left">
       <div>
         <h3 class="text-4xl font-black lg:text-6xl">Don't just take our word for it</h3>
-        <p class="mr-20 mt-10 text-xl text-muted-foreground">
+        <p class="mt-10 text-xl text-muted-foreground lg:mr-20">
           Cider is the go-to choice for thousands of talented individuals (<kbd>{{
             memberCount
           }}</kbd>

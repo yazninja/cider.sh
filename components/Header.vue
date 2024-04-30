@@ -96,13 +96,13 @@
         </UiButton>
         <UiButton
           size="icon"
-          class="text-muted-foreground md:hidden"
+          class="mr-2 text-muted-foreground md:hidden"
           variant="ghost"
           @click="isOpen = true"
         >
-          <Icon name="fe:search" class="h-[18px] w-[18px]" />
+          <Icon name="fe:search" class="mt-1 h-[25px] w-[25px]" />
         </UiButton>
-        <div class="social-icons flex items-center gap-4">
+        <div class="social-icons flex items-center gap-3">
           <NuxtLink v-for="link in socialLinks" :key="link.url" :to="link.url" target="_blank">
             <Icon :name="link.icon" />
           </NuxtLink>

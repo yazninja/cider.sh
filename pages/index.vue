@@ -29,13 +29,15 @@
         <NuxtLink to="/downloads">
           <UiButton size="lg">Download</UiButton>
         </NuxtLink>
-        <UiButton
-          size="lg"
-          variant="ghost"
-          class="learn-more hover:gap-5 hover:bg-transparent hover:underline"
-        >
-          Learn More <Icon name="material-symbols:arrow-right-alt-rounded" size="24px" />
-        </UiButton>
+        <NuxtLink to="/learn-more">
+          <UiButton
+            size="lg"
+            variant="ghost"
+            class="learn-more hover:gap-5 hover:bg-transparent hover:underline"
+          >
+            Learn More <Icon name="material-symbols:arrow-right-alt-rounded" size="24px" />
+          </UiButton>
+        </NuxtLink>
       </div>
       <Carousel :images="images" />
     </UiContainer>
@@ -88,14 +90,14 @@
 </style>
 
 <script lang="ts" setup>
+  import { isClient } from "@vueuse/core";
+
   definePageMeta({ title: "Home" });
-
-  const { data } = await useAsyncData<any>("latest-release", () =>
+  let data: any;
+  ({ data } = await useAsyncData<any>("latest-release", async () =>
     queryContent("/changelogs/client-releases").sort({ releaseNo: -1, $numeric: true }).find()
-  );
-
+  ));
   console.log(data.value);
-
   let images = [
     "/client-images/immersive.png",
     "/client-images/comfy.png",
