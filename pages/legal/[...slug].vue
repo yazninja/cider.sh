@@ -22,7 +22,7 @@
     </nav>
     <div class="flex flex-col">
       <!-- <p class="mb-3 font-semibold text-primary">Legal</p> -->
-      <ContentDoc class="prose prose-rose dark:prose-invert max-w-screen-md lg:max-w-screen-lg" />
+      <ContentDoc class="prose prose-rose max-w-screen-md dark:prose-invert lg:max-w-screen-lg" />
     </div>
     <ContentNavigation v-slot="{ navigation }">
       <ul>

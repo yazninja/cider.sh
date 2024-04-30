@@ -5,6 +5,9 @@ export default defineNuxtConfig({
       autoSubfolderIndex: false,
     },
   },
+  experimental: {
+    viewTransition: true,
+  },
   devtools: { enabled: true },
   modules: [
     "@nuxtjs/tailwindcss",
