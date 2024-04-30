@@ -1,3 +1,5 @@
+import tailwindTypography from "@tailwindcss/typography";
+
 const { fontFamily } = require("tailwindcss/defaultTheme");
 
 /**@type {import('tailwindcss').Config} */
@@ -96,5 +98,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), tailwindTypography],
 };

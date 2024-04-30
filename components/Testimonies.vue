@@ -9,11 +9,13 @@
     </div>
     <div class="flex h-full items-start justify-center text-center lg:text-left">
       <div>
-        <h3 class="text-4xl font-semibold lg:text-7xl">Don't just take our word for it</h3>
-        <p class="mr-20 mt-10 text-xl text-muted-foreground">
-          Cider is the go-to choice for thousands of talented individuals (13,304 to be exact) like
-          you! Our vibrant community is at the heart of everything we do. See what some of our
-          satisfied users have to say...
+        <h3 class="text-4xl font-black lg:text-6xl">Don't just take our word for it</h3>
+        <p class="mt-10 text-xl text-muted-foreground lg:mr-20">
+          Cider is the go-to choice for thousands of talented individuals (<kbd>{{
+            memberCount
+          }}</kbd>
+          to be exact) like you! Our vibrant community is at the heart of everything we do. See what
+          some of our satisfied users have to say...
         </p>
       </div>
     </div>
@@ -39,9 +41,9 @@
       >
         <SwiperSlide v-for="t in testimonies" :key="t.author">
           <div
-            class="border border-white/20 bg-white/10 p-4 text-white backdrop-blur-lg lg:px-5 lg:py-6"
+            class="light:border-black/20 light:bg-gray-700/10 rounded-lg border border-white/20 bg-gray-500/10 p-4 text-foreground backdrop-blur-lg lg:px-5 lg:py-6"
           >
-            <p class="mb-5 text-xl font-semibold lg:mb-8 lg:text-3xl">“{{ t.quote }}”</p>
+            <p class="mb-5 text-xl font-semibold lg:mb-8 lg:text-2xl">“{{ t.quote }}”</p>
             <div class="mt-2 lg:mt-3">
               <p class="w-100 text-xl font-semibold">{{ t.author }}</p>
               <p>{{ t.position }}</p>
@@ -54,6 +56,7 @@
 </template>
 
 <script lang="ts" setup>
+  const memberCount = ref("13,567");
   const testimonies = [
     {
       author: "Kai",

@@ -1,36 +1,56 @@
 <template>
-  <main class="flex justify-center gap-10 py-10">
-    <nav>
-      <ContentList path="/docs" v-slot="{ list }">
-        <ul>
-          <li>
-            <b>See All</b>
-          </li>
-          <li
-            v-for="article of list"
-            :key="article._path"
-            class="hover:text-primary hover:underline"
-          >
-            <NuxtLink :to="article._path">{{ article.title }}</NuxtLink>
-          </li>
-        </ul>
-        <!-- <div v-for="article in list" :key="article._path">
-            <h2>{{ article.title }}</h2>
-            <p>{{ article.description }}</p>
-          </div> -->
-      </ContentList>
-    </nav>
-    <div class="flex flex-col">
-      <!-- <p class="mb-3 font-semibold text-primary">Legal</p> -->
-      <ContentDoc class="prose prose-rose dark:prose-invert" />
-    </div>
-    <ContentNavigation v-slot="{ navigation }">
-      <ul>
-        <li v-for="link of navigation" :key="link._path">
-          <NuxtLink :to="link._path">{{ link.title }}</NuxtLink>
-        </li>
-      </ul>
-    </ContentNavigation>
-  </main>
+  <div class="flex flex-col">
+    <!-- Main content -->
+    <main class="container grid grid-cols-1 lg:grid-cols-[290px_minmax(0,1fr)] lg:gap-10">
+      <!-- Left sidebar with page links -->
+      <div
+        class="sticky top-14 z-20 hidden h-[calc(100dvh-57px)] border-r text-card-foreground lg:block"
+      >
+        <UiScrollArea class="h-[calc(100dvh-57px)] bg-background px-2 py-5" orientation="vertical">
+          <DocsNavlink :links="filteredNavigation" />
+        </UiScrollArea>
+      </div>
+      <!-- Page content -->
+      <div class="xl:grid xl:grid-cols-[1fr,250px] xl:gap-5">
+        <!-- Page content -->
+        <div
+          class="prose prose-lg prose-rose mx-auto w-full min-w-0 max-w-none py-5 dark:prose-invert lg:prose-base prose-headings:scroll-mt-16 prose-headings:tracking-tight prose-h2:mt-6 prose-h2:border-b prose-h2:pb-3 first:prose-h2:mt-10 prose-a:decoration-primary prose-a:underline-offset-2 hover:prose-a:text-primary prose-pre:text-lg lg:prose-pre:text-base"
+        >
+          <ContentDoc />
+        </div>
+        <!-- Table of contents for current page -->
+        <aside
+          v-if="toc && toc.links.length && toc.links"
+          class="sticky top-14 z-20 hidden h-[calc(100dvh-57px)] overflow-y-auto border-l bg-background text-card-foreground xl:block"
+        >
+          <div class="p-5">
+            <p class="mb-5 text-sm font-semibold">Page contents</p>
+            <DocsToclink :set-active="setActive" :active-id="activeId" :links="toc.links" />
+          </div>
+        </aside>
+      </div>
+    </main>
+  </div>
 </template>
-<script lang="ts" setup></script>
+
+<script lang="ts" setup>
+  import { useActiveScroll } from "vue-use-active-scroll";
+
+  const { toc, navigation } = useContent();
+
+  const filteredNavigation = computed(
+    () => navigation.value.filter((n: any) => n._path == "/docs")[0].children
+  );
+
+  const targets = computed(() =>
+    toc.value.links.flatMap(({ id, children = [] }: any) => [
+      id,
+      ...children.map(({ id }: { id: string }) => id),
+    ])
+  );
+
+  const { activeId, setActive } = useActiveScroll(targets, {
+    replaceHash: true,
+    overlayHeight: 80,
+  });
+</script>
