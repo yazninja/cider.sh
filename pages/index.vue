@@ -108,17 +108,15 @@
       page: "/home",
     },
   });
-  let data: any;
-  ({ data } = await useAsyncData<any>("latest-release", async () =>
+
+  const { data } = await useAsyncData("latest-release", async () =>
     queryContent("/changelogs/client-releases")
       .sort({ releaseNo: -1, $numeric: true })
       .only(["_path", "navigation"])
+      .limit(1)
       .find()
-  )),
-    {
-      deep: false,
-      lazy: true,
-    };
+  );
+
   const path = useRoute().fullPath;
   const isUwu = ref(false);
   if (path.includes("?uwu")) {
