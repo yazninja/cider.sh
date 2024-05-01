@@ -90,12 +90,19 @@
 </style>
 
 <script lang="ts" setup>
-  definePageMeta({ title: "Home" });
+  definePageMeta({
+    title: "Home",
+    documentDriven: {
+      page: "/home",
+    },
+  });
   let data: any;
   ({ data } = await useAsyncData<any>("latest-release", async () =>
-    queryContent("/changelogs/client-releases").sort({ releaseNo: -1, $numeric: true }).find()
+    queryContent("/changelogs/client-releases")
+      .sort({ releaseNo: -1, $numeric: true })
+      .only(["_path", "navigation"])
+      .find()
   ));
-  console.log(data.value);
   let images = [
     "/client-images/immersive.png",
     "/client-images/comfy.png",

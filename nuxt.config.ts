@@ -5,10 +5,7 @@ export default defineNuxtConfig({
       autoSubfolderIndex: false,
     },
   },
-  experimental: {
-    viewTransition: true,
-  },
-  devtools: { enabled: true },
+  devtools: { enabled: true, timeline: { enabled: true } },
   modules: [
     "@nuxtjs/tailwindcss",
     "@nuxtjs/color-mode",
@@ -51,7 +48,7 @@ export default defineNuxtConfig({
     documentDriven: {
       page: true,
       surround: false,
-      injectPage: false,
+      injectPage: true,
     },
     navigation: { fields: ["icon", "releaseNo", "tags"] },
     markdown: {
