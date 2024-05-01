@@ -6,8 +6,12 @@
       <div
         class="sticky top-14 z-20 hidden h-[calc(100dvh-57px)] border-r text-card-foreground lg:block"
       >
-        <UiScrollArea class="h-[calc(100dvh-57px)] bg-background px-2 py-5" orientation="vertical">
-          <DocsNavlink :links="filteredNavigation" />
+        <UiScrollArea
+          v-if="navigation"
+          class="h-[calc(100dvh-57px)] bg-background px-2 py-5"
+          orientation="vertical"
+        >
+          <DocsNavlink :links="navigation[0].children!" />
         </UiScrollArea>
       </div>
       <!-- Page content -->
@@ -20,12 +24,16 @@
         </div>
         <!-- Table of contents for current page -->
         <aside
-          v-if="toc && toc.links.length && toc.links"
+          v-if="page && page.body && page.body.toc && page.body.toc.links.length > 0"
           class="sticky top-14 z-20 hidden h-[calc(100dvh-57px)] overflow-y-auto border-l bg-background text-card-foreground xl:block"
         >
           <div class="p-5">
             <p class="mb-5 text-sm font-semibold">Page contents</p>
-            <DocsToclink :set-active="setActive" :active-id="activeId" :links="toc.links" />
+            <DocsToclink
+              :set-active="setActive"
+              :active-id="activeId"
+              :links="page.body.toc.links"
+            />
           </div>
         </aside>
       </div>
@@ -36,14 +44,15 @@
 <script lang="ts" setup>
   import { useActiveScroll } from "vue-use-active-scroll";
 
-  const { toc, navigation } = useContent();
+  const $route = useRoute();
 
-  const filteredNavigation = computed(
-    () => navigation.value.filter((n: any) => n._path == "/docs")[0].children
+  const { data: page } = await useAsyncData("page-data", () => queryContent($route.path).findOne());
+  const { data: navigation } = await useAsyncData("navigation", () =>
+    fetchContentNavigation({ where: [{ _path: { $icontains: "/docs" } }] })
   );
 
-  const targets = computed(() =>
-    toc.value.links.flatMap(({ id, children = [] }: any) => [
+  const targets: any = computed(() =>
+    page.value?.body?.toc?.links.flatMap(({ id, children = [] }: any) => [
       id,
       ...children.map(({ id }: { id: string }) => id),
     ])

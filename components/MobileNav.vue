@@ -39,7 +39,7 @@
 </template>
 
 <script lang="ts" setup>
-  const { navigation } = useContent();
+  const { data: navigation } = await useAsyncData("navigation", () => fetchContentNavigation());
 
   const props = defineProps<{
     modelValue?: boolean;

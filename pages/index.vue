@@ -8,7 +8,7 @@
         <UiBadge
           :to="data[0]?._path"
           variant="secondary"
-          class="px-3 py-1.5 text-sm font-normal lg:py-2"
+          class="px-3 py-1.5 text-sm font-normal backdrop-blur-md dark:bg-transparent dark:backdrop-brightness-50 lg:py-2"
           >{{ data[0]?.navigation.headline }} <Icon class="ml-3 h-4 w-4" name="lucide:arrow-right"
         /></UiBadge>
       </div>
@@ -108,13 +108,15 @@
       page: "/home",
     },
   });
-  let data: any;
-  ({ data } = await useAsyncData<any>("latest-release", async () =>
+
+  const { data } = await useAsyncData("latest-release", async () =>
     queryContent("/changelogs/client-releases")
       .sort({ releaseNo: -1, $numeric: true })
       .only(["_path", "navigation"])
+      .limit(1)
       .find()
-  ));
+  );
+
   const path = useRoute().fullPath;
   const isUwu = ref(false);
   if (path.includes("?uwu")) {
