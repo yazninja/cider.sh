@@ -12,33 +12,45 @@
           >{{ data[0]?.navigation.headline }} <Icon class="ml-3 h-4 w-4" name="lucide:arrow-right"
         /></UiBadge>
       </div>
-
-      <h1
-        class="mb-4 mt-7 text-4xl font-extrabold lg:mb-6 lg:mt-5 lg:text-center lg:text-5xl xl:text-6xl"
-      >
-        Listening to music<br />Redefined
-      </h1>
-      <p class="mx-auto max-w-[760px] text-lg text-muted-foreground lg:text-center lg:text-xl">
-        Cider is a new cross-platform Apple Music experience built on Vue.js and written from the
-        ground up with performance in mind. 🚀
-      </p>
-
-      <div
-        class="mt-8 grid w-full grid-cols-1 items-center gap-3 sm:flex sm:justify-center lg:mt-10"
-      >
-        <NuxtLink to="/downloads">
-          <UiButton size="lg">Download</UiButton>
-        </NuxtLink>
-        <NuxtLink to="/learn-more">
-          <UiButton
-            size="lg"
-            variant="ghost"
-            class="learn-more hover:gap-5 hover:bg-transparent hover:underline"
+      <div class="flex">
+        <div :class="[isUwu ? 'w-full max-w-[760px] max-w-xl justify-between !text-left' : '']">
+          <h1
+            class="mb-4 mt-7 text-4xl font-extrabold lg:mb-6 lg:mt-5 lg:text-center lg:text-5xl xl:text-6xl"
+            :class="[isUwu ? '!text-left' : '']"
           >
-            Learn More <Icon name="material-symbols:arrow-right-alt-rounded" size="24px" />
-          </UiButton>
-        </NuxtLink>
+            Listening to music<br />Redefined
+          </h1>
+          <p
+            class="mx-auto max-w-[760px] text-lg text-muted-foreground lg:text-center lg:text-xl"
+            :class="[isUwu ? '!text-left' : '']"
+          >
+            Cider is a new cross-platform Apple Music experience built on Vue.js and written from
+            the ground up with performance in mind. 🚀
+          </p>
+
+          <div
+            class="mt-8 grid w-full grid-cols-1 items-center gap-3 sm:flex sm:justify-center lg:mt-10"
+            :class="[isUwu ? '!justify-start !text-left' : '']"
+          >
+            <NuxtLink to="/downloads">
+              <UiButton size="lg">Download</UiButton>
+            </NuxtLink>
+            <NuxtLink to="/learn-more">
+              <UiButton
+                size="lg"
+                variant="ghost"
+                class="learn-more hover:gap-5 hover:bg-transparent hover:underline"
+              >
+                Learn More <Icon name="material-symbols:arrow-right-alt-rounded" size="24px" />
+              </UiButton>
+            </NuxtLink>
+          </div>
+        </div>
+        <div v-if="isUwu" class="max-w-xl pl-20">
+          <img src="/uwu-logo.png" alt="Cider Logo" class="mx-auto" />
+        </div>
       </div>
+
       <Carousel :images="images" />
     </UiContainer>
     <BuiltUsing />
@@ -103,6 +115,12 @@
       .only(["_path", "navigation"])
       .find()
   ));
+  const path = useRoute().fullPath;
+  const isUwu = ref(false);
+  if (path.includes("?uwu")) {
+    isUwu.value = true;
+  }
+
   let images = [
     "/client-images/immersive.png",
     "/client-images/comfy.png",
