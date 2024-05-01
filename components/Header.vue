@@ -41,9 +41,18 @@
                         class="rounded-md p-3 text-sm hover:bg-muted"
                       >
                         <NuxtLink :to="item.link">
-                          <p class="mb-1 font-semibold leading-none text-foreground">
-                            {{ item.title }}
-                          </p>
+                          <div class="flex w-full">
+                            <p class="mb-1 font-semibold leading-none text-foreground">
+                              {{ item.title }}
+                              <UiBadge
+                                v-if="item.badgeText"
+                                class="ml-2 inline-block border-primary text-primary"
+                                variant="outline"
+                                >{{ item.badgeText }}</UiBadge
+                              >
+                            </p>
+                          </div>
+
                           <p class="line-clamp-2 text-muted-foreground">{{ item.description }}</p>
                         </NuxtLink>
                       </li>
@@ -161,7 +170,8 @@
       link: "/remote",
     },
     {
-      title: "Cider Connect (Coming Soon)",
+      title: "Cider Connect",
+      badgeText: "Coming Soon",
       description:
         "Get a Cider account to sync your client settings, host and join listening parties and more.",
       link: "#", // TODO: Update link when Connect is live
