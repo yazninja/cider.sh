@@ -15,6 +15,7 @@ export default defineNuxtConfig({
     "@morev/vue-transitions/nuxt",
     "@nuxt/content",
     "nuxt-swiper",
+    "@nuxt/image"
   ],
   content: {
     ignores: ["/1.client-releases/images", "\\.html$", "CNAME"],

@@ -8,7 +8,12 @@
       >
         <UiScrollArea class="h-[calc(100dvh-57px)] bg-background px-2 py-5" orientation="vertical">
           <p class="text-md mb-8 font-semibold">Client Releases</p>
-          <DocsNavlink :links="data" />
+          <Suspense>
+            <LazyDocsNavlink :links="data" />
+            <template #fallback>
+              <UiSkeleton class="h-[calc(100dvh-57px)] w-full" />
+            </template>
+          </Suspense>
         </UiScrollArea>
       </div>
       <!-- Page content -->
@@ -18,7 +23,7 @@
           class="prose prose-lg prose-rose mx-auto w-full min-w-0 max-w-none py-5 dark:prose-invert lg:prose-base prose-headings:scroll-mt-16 prose-headings:tracking-tight prose-h2:mt-6 prose-h2:border-b prose-h2:pb-3 first:prose-h2:mt-10 prose-a:decoration-primary prose-a:underline-offset-2 hover:prose-a:text-primary prose-pre:text-lg lg:prose-pre:text-base"
         >
           <div v-if="page?.image">
-            <img
+            <NuxtImg
               :src="
                 'https://github.com/ciderapp/changes/blob/main/1.client-releases/images/' +
                 page.image +
@@ -28,7 +33,7 @@
               class="mb-5 w-full overflow-hidden rounded-md border border-foreground/60 object-cover shadow-lg"
             />
           </div>
-          <ContentDoc />
+          <LazyContentDoc />
         </div>
         <!-- Table of contents for current page -->
         <aside
@@ -37,11 +42,16 @@
         >
           <div class="p-5">
             <p class="mb-5 text-sm font-semibold">Page contents</p>
-            <DocsToclink
-              :set-active="setActive"
-              :active-id="activeId"
-              :links="page.body.toc.links"
-            />
+            <Suspense>
+              <LazyDocsToclink
+                :set-active="setActive"
+                :active-id="activeId"
+                :links="page.body.toc.links"
+              />
+              <template #fallback>
+                <UiSkeleton class="h-[calc(100dvh-57px)] w-full" />
+              </template>
+            </Suspense>
           </div>
         </aside>
       </div>

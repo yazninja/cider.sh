@@ -3,15 +3,16 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "bun nuxt build",
-    "dev": "bun nuxt dev",
-    "generate": "bun nuxt generate",
-    "preview": "bun nuxt preview",
-    "postinstall": "bun nuxt prepare"
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
     "@morev/vue-transitions": "^3.0.2",
     "@nuxt/content": "^2.12.1",
+    "@nuxt/image": "^1.6.0",
     "@tailwindcss/typography": "^0.5.13",
     "@vee-validate/nuxt": "^4.12.6",
     "nuxt": "^3.11.2",
@@ -38,5 +39,6 @@
   },
   "trustedDependencies": [
     "@morev/vue-transitions"
-  ]
+  ],
+  "packageManager": "pnpm@9.0.6+sha1.648f6014eb363abb36618f2ba59282a9eeb3e879"
 }

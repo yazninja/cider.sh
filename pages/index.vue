@@ -47,7 +47,7 @@
           </div>
         </div>
         <div v-if="isUwu" class="max-w-xl pl-20">
-          <img src="/uwu-logo.png" alt="Cider Logo" class="mx-auto" />
+          <NuxtImg src="/uwu-logo.png" alt="Cider Logo" class="mx-auto" />
         </div>
       </div>
 

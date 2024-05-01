@@ -29,7 +29,7 @@
         </template>
       </div>
       <!-- eslint-disable-next-line vue/html-self-closing -->
-      <img
+      <NuxtImg
         src="/og.png"
         alt="Share team inboxes feature"
         class="h-[300px] w-full rounded-lg object-cover shadow-sm lg:h-[520px]"
