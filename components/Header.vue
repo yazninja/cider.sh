@@ -13,7 +13,7 @@
 
           <NuxtLink to="/" class="flex items-center text-lg font-bold">
             <div class="mr-2 flex rounded-md bg-black p-1 dark:bg-black/0">
-              <img src="/CC24-transparent.svg" class="h-8 w-8" />
+              <NuxtImg src="/CC24-transparent.svg" class="h-8 w-8" />
             </div>
 
             <span class="hidden md:block">Cider Collective</span>

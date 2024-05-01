@@ -4,7 +4,7 @@
   >
     <div class="absolute bottom-5 right-[50%] hidden lg:block">
       <div class="h-[300px] w-[300px]">
-        <img src="/fancy-arrow.svg" />
+        <NuxtImg src="/fancy-arrow.svg" />
       </div>
     </div>
     <div class="flex h-full items-start justify-center text-center lg:text-left">

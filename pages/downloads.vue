@@ -41,7 +41,7 @@
                 <div>
                   <div v-if="p.download.html" class="" v-html="p.download.html" />
                   <NuxtLink v-else :to="p.download.url">
-                    <img :src="p.download.image" alt="itch.io" class="max-w-xs" />
+                    <NuxtImg :src="p.download.image" alt="itch.io" class="max-w-xs" />
                   </NuxtLink>
                 </div>
               </div>
@@ -210,7 +210,8 @@
     {
       icon: "heroicons:bolt",
       title: "Cider Classic",
-      subtitle: "[DEPRECATED] The original Cider app. No longer supported or maintained",
+      subtitle:
+        "[DEPRECATED] The original Cider app. No longer supported or maintained. Use at your own risk.",
       price: 10,
       perks: ["Free and open-source", "Community Plugins", "Community Themes"],
       download: {

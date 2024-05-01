@@ -44,7 +44,7 @@
     <div class="mb-10 mt-16 lg:hidden">
       <NuxtLink :to="featuredRelease.path">
         <!-- eslint-disable-next-line vue/html-self-closing -->
-        <img
+        <NuxtImg
           :src="featuredRelease.image"
           :alt="featuredRelease.title"
           class="mb-5 h-[240px] w-full rounded-lg object-cover shadow"
@@ -76,7 +76,7 @@
         <div>
           <NuxtLink :to="r.path">
             <!-- eslint-disable-next-line vue/html-self-closing -->
-            <img
+            <NuxtImg
               v-if="r.image"
               :src="r.image"
               :alt="r.title"

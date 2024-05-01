@@ -8,7 +8,7 @@
           <div class="sticky top-0 mb-3 w-full bg-background">
             <div class="flex items-center gap-3.5">
               <div class="mr-2 flex rounded-md bg-black p-1 dark:bg-black/0">
-                <img src="/CC24-transparent.svg" class="h-8 w-8" />
+                <NuxtImg src="/CC24-transparent.svg" class="h-8 w-8" />
               </div>
               <p class="text-xl font-bold">Cider Collective</p>
               <UiSheetClose class="ml-auto">

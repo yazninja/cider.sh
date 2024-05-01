@@ -2,7 +2,7 @@
   <!-- <div class="carousel" @onMouseEnter="isHovered = true" @onMouseLeave="isHovered = false"> -->
   <div class="carousel" @mouseenter="isHovered = true" @mouseleave="isHovered = false">
     <div class="images">
-      <img
+      <NuxtImg
         v-for="(image, index) in props.images"
         :src="image"
         :key="image"

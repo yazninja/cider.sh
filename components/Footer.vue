@@ -5,7 +5,7 @@
   >
     <NuxtLink to="#" class="flex items-center gap-3">
       <!-- eslint-disable-next-line vue/html-self-closing -->
-      <img
+      <NuxtImg
         src="/CC24-transparent.svg"
         fit="contain"
         alt="Company Logo"

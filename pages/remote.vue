@@ -19,7 +19,7 @@
         <div>B E T A</div>
       </h2>
       <br />
-      <img class="w-screen md:w-7/12" src="/remote.png" alt="Cider Remote" />
+      <NuxtImg class="w-screen md:w-7/12 md:max-w-screen-md" src="/remote.png" alt="Cider Remote" />
       <br />
       <p
         class="text-center text-4xl font-bold tracking-tight dark:text-white lg:text-center lg:text-5xl xl:text-6xl"
