@@ -17,7 +17,7 @@
         <div
           class="prose prose-lg prose-rose mx-auto w-full min-w-0 max-w-none py-5 dark:prose-invert lg:prose-base prose-headings:scroll-mt-16 prose-headings:tracking-tight prose-h2:mt-6 prose-h2:border-b prose-h2:pb-3 first:prose-h2:mt-10 prose-a:decoration-primary prose-a:underline-offset-2 hover:prose-a:text-primary prose-pre:text-lg lg:prose-pre:text-base"
         >
-          <div v-if="page.image">
+          <div v-if="page?.image">
             <img
               :src="
                 'https://github.com/ciderapp/changes/blob/main/1.client-releases/images/' +
@@ -32,12 +32,16 @@
         </div>
         <!-- Table of contents for current page -->
         <aside
-          v-if="toc && toc.links.length && toc.links"
+          v-if="page && page.body && page.body.toc && page.body.toc.links.length > 0"
           class="sticky top-14 z-20 hidden h-[calc(100dvh-57px)] overflow-y-auto border-l bg-background text-card-foreground xl:block"
         >
           <div class="p-5">
             <p class="mb-5 text-sm font-semibold">Page contents</p>
-            <DocsToclink :set-active="setActive" :active-id="activeId" :links="toc.links" />
+            <DocsToclink
+              :set-active="setActive"
+              :active-id="activeId"
+              :links="page.body.toc.links"
+            />
           </div>
         </aside>
       </div>
@@ -48,22 +52,16 @@
 <script lang="ts" setup>
   import { useActiveScroll } from "vue-use-active-scroll";
 
-  const { toc, navigation, page } = useContent();
+  const $route = useRoute();
+
+  const { data: page } = await useAsyncData("page-data", () => queryContent($route.path).findOne());
 
   const { data } = await useAsyncData<any>("changelogs", () =>
     queryContent("/changelogs/client-releases").sort({ releaseNo: -1, $numeric: true }).find()
   );
 
-  // const filteredNavigation = computed(() =>
-  //   navigation.value
-  //     .filter((n: any) => n._path == "/changelogs")[0]
-  //     .children.filter((n: any) => n._path == "/changelogs/client-releases")[0]
-  //     .children.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime())
-  // );
-  // console.log("FN:", filteredNavigation.value);
-
-  const targets = computed(() =>
-    toc.value.links.flatMap(({ id, children = [] }: any) => [
+  const targets: any = computed(() =>
+    page.value?.body?.toc?.links.flatMap(({ id, children = [] }: any) => [
       id,
       ...children.map(({ id }: { id: string }) => id),
     ])

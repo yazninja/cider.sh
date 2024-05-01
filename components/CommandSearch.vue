@@ -70,7 +70,8 @@
   onMounted(() => {
     localModel.value = false;
   });
-  const { navigation } = useContent();
+  // const { navigation } = useContent();
+  const { data: navigation } = await useAsyncData("navigation", () => fetchContentNavigation());
 
   const colorMode = useColorMode();
   const setTheme = (e: Event, val: string) => {
