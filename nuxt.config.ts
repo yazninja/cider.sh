@@ -45,11 +45,6 @@ export default defineNuxtConfig({
         },
       },
     },
-    documentDriven: {
-      page: true,
-      surround: false,
-      injectPage: true,
-    },
     navigation: { fields: ["icon", "releaseNo", "tags"] },
     markdown: {
       toc: { depth: 5, searchDepth: 4 },
@@ -73,13 +68,13 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    // "/": { prerender: true },
-    // "/downloads": { prerender: true },
-    // "/changelogs": { prerender: true },
+    "/": { prerender: true },
+    "/downloads": { prerender: true },
+    "/changelogs": { prerender: true },
     "/changelogs/**": { isr: 60 },
     "/docs": { redirect: "/docs/summary" },
     "/docs/**": { isr: 60 },
-    // "/remote": { prerender: true },
+    "/remote": { prerender: true },
     "/marketplace": { redirect: "https://marketplace.cider.sh" },
     "/o": { redirect: "/api/v1/open" },
     "/p": { redirect: "/api/v1/play" },
@@ -91,8 +86,8 @@ export default defineNuxtConfig({
   },
 
   colorMode: {
-    preference: "system",
-    // fallback: "dark",
+    preference: "dark",
+    fallback: "dark",
     hid: "nuxt-color-mode-script",
     globalName: "__NUXT_COLOR_MODE__",
     componentName: "ColorScheme",
