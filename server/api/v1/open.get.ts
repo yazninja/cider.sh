@@ -1,5 +1,8 @@
-export default defineEventHandler((event) => {
+export default defineEventHandler(async (event) => {
   const query = getQuery(event);
 
-  return { query: query };
+  if (query.id && query.s) {
+    return await sendRedirect(event, `cider://open/s/${query.id}`);
+  }
+  return await sendRedirect(event, `cider://${event.path.split("?")[1]}`);
 });
