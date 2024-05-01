@@ -4,7 +4,7 @@
       class="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(150%_125%_at_50%_-10%,#f32c56_0%,transparent_50%)]"
     ></div>
     <UiContainer class="relative flex flex-col items-center py-10 text-center lg:py-20">
-      <div>
+      <div v-if="data">
         <UiBadge
           :to="data[0]?._path"
           variant="secondary"
