@@ -5,10 +5,21 @@
     </p>
     <div class="flex flex-wrap items-center justify-center gap-5">
       <template v-for="n in companies" :key="n.text">
-        <div>
-          <span class="sr-only">{{ n.text }}</span>
-          <Icon :name="n.icon" class="h-24 w-24" />
-        </div>
+        <UiTooltip disable-closing-trigger>
+          <template #trigger>
+            <UiTooltipTrigger as-child>
+              <NuxtLink :to="n.link">
+                <span class="sr-only">{{ n.text }}</span>
+                <Icon :name="n.icon" class="h-24 w-24" />
+              </NuxtLink>
+            </UiTooltipTrigger>
+          </template>
+          <template #content>
+            <UiTooltipContent align="center">
+              <p>{{ n.text }}</p>
+            </UiTooltipContent>
+          </template>
+        </UiTooltip>
       </template>
     </div>
   </UiContainer>
@@ -16,10 +27,14 @@
 
 <script lang="ts" setup>
   const companies = [
-    { text: "Quasar", icon: "vscode-icons:file-type-quasar" },
-    { text: "Vue", icon: "logos:vue" },
-    { text: "Socket.io", icon: "logos:socket-io" },
-    { text: "Tauri", icon: "logos:tauri" },
-    { text: "Electron", icon: "logos:electron" },
+    { text: "Quasar", icon: "vscode-icons:file-type-quasar", link: "https://quasar.dev" },
+    { text: "Vue", icon: "logos:vue", link: "https://vuejs.org" },
+    { text: "Socket.io", icon: "logos:socket-io", link: "https://socket.io" },
+    { text: "Tauri (for Windows Builds)", icon: "logos:tauri", link: "https://tauri.studio" },
+    {
+      text: "Electron (for MacOS and Linux)",
+      icon: "logos:electron",
+      link: "https://electronjs.org",
+    },
   ];
 </script>

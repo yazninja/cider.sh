@@ -105,6 +105,11 @@
 <script lang="ts" setup>
   definePageMeta({
     title: "Downloads",
+    documentDriven: {
+      page: {
+        _path: "/downloads",
+      },
+    },
   });
   useSeoMeta({
     description: "Download Cider for Windows, macOS, and Linux",

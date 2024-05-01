@@ -3,11 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "build": "bun nuxt build",
+    "dev": "bun nuxt dev",
+    "generate": "bun nuxt generate",
+    "preview": "bun nuxt preview",
+    "postinstall": "bun nuxt prepare"
   },
   "dependencies": {
     "@morev/vue-transitions": "^3.0.2",
@@ -35,5 +35,8 @@
     "sass": "^1.75.0",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.4.5"
-  }
+  },
+  "trustedDependencies": [
+    "@morev/vue-transitions"
+  ]
 }
