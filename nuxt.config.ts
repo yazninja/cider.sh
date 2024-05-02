@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       autoSubfolderIndex: false,
+      routes: ["/api/search.json"],
     },
   },
   devtools: { enabled: true, timeline: { enabled: true } },
@@ -15,7 +16,7 @@ export default defineNuxtConfig({
     "@morev/vue-transitions/nuxt",
     "@nuxt/content",
     "nuxt-swiper",
-    "@nuxt/image"
+    "@nuxt/image",
   ],
   content: {
     ignores: ["/1.client-releases/images", "\\.html$", "CNAME"],
