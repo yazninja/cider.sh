@@ -130,7 +130,7 @@
 
     text = text.replace(
       new RegExp(term, "gi"),
-      `<span class="bg-primary text-background">${term}</span>`
+      `<span class="bg-yellow-300 dark:bg-yellow-600 text-foreground font-bold">${term}</span>`
     );
 
     return text;
