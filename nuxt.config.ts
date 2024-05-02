@@ -3,7 +3,6 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       autoSubfolderIndex: false,
-      routes: ["/api/search.json"],
     },
   },
   devtools: { enabled: true, timeline: { enabled: true } },
