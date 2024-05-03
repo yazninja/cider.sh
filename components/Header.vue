@@ -162,12 +162,12 @@
     {
       title: "Cider Client",
       description: "Available for Windows, macOS, and Linux! The main Cider client.",
-      link: "/downloads",
+      link: "/downloads/client",
     },
     {
       title: "Cider Remote",
       description: "Easily control your music from your phone or tablet.",
-      link: "/remote",
+      link: "/downloads/remote",
     },
     {
       title: "Cider Connect",
@@ -185,15 +185,6 @@
   ];
 
   const mobileNav = ref(false);
-
-  const colorMode = useColorMode();
-  const setTheme = (val: string) => {
-    colorMode.preference = val;
-  };
-
-  const currentIcon = computed(() => {
-    return modes.find((m) => m.value === colorMode?.preference)?.icon;
-  });
 
   const isOpen = ref(false);
 

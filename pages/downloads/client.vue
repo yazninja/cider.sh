@@ -41,15 +41,14 @@
                 <div>
                   <div v-if="p.download.html" class="" v-html="p.download.html" />
                   <NuxtLink v-else :to="p.download.url">
-                    <NuxtImg :src="p.download.image" alt="itch.io" class="max-w-xs" />
+                    <NuxtImg
+                      :src="p.download.image"
+                      alt="itch.io"
+                      class="transition-[duration]-[1000ms] max-w-xs transform-gpu transition-all hover:-translate-y-1"
+                    />
                   </NuxtLink>
                 </div>
               </div>
-              <div class="px-6 pt-6">
-                <p class="font-semibold uppercase">Features</p>
-                <p class="mt-2 text-muted-foreground">Below is the list of features offered</p>
-              </div>
-
               <ul class="grid w-full grid-cols-1 gap-4 px-5 pt-8 md:grid-cols-2 lg:py-8">
                 <li v-for="(perk, k) in p.perks" :key="k" class="flex items-center gap-3">
                   <Icon name="heroicons:check-circle" class="h-6 w-6 shrink-0 text-primary" />
@@ -77,11 +76,6 @@
                   <p class="mt-1 text-muted-foreground">{{ p.subtitle }}</p>
                 </div>
               </div>
-              <div class="px-6 pt-6">
-                <p class="font-semibold uppercase">Features</p>
-                <p class="mt-2 text-muted-foreground">Below is the list of features offered</p>
-              </div>
-
               <ul class="grid w-full grid-cols-1 gap-4 px-5 pt-8 md:grid-cols-2 lg:py-8">
                 <li v-for="(perk, k) in p.perks" :key="k" class="flex items-center gap-3">
                   <Icon name="heroicons:check-circle" class="h-6 w-6 shrink-0 text-primary" />

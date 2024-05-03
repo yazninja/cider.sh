@@ -6,7 +6,7 @@
     <div class="container relative z-[1]">
       <p class="mb-5 font-bold tracking-tight text-primary">{{ statusCode }} error</p>
       <h1 class="text-4xl font-bold tracking-tight lg:text-5xl">{{ title }}</h1>
-      <UiButton class="mt-5" @click="clearError({ redirect: '#' })">Take me home</UiButton>
+      <UiButton class="mt-5" @click="clearError({ redirect: '/' })">Take me home</UiButton>
     </div>
   </div>
 </template>
