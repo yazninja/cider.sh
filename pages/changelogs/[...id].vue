@@ -52,6 +52,18 @@
                 <UiSkeleton class="h-[calc(100dvh-57px)] w-full" />
               </template>
             </Suspense>
+            <NuxtLink to="https://cidercollective.itch.io/cider">
+              <NuxtImg src="/itchio-color.svg" alt="itch.io" class="my-2 w-full p-3" />
+            </NuxtLink>
+            <!-- <div v-if="p.download.html" class="" v-html="p.download.html" />
+                  <NuxtLink v-else :to="p.download.url">
+                    <NuxtImg
+                      :src="p.download.image"
+                      alt="itch.io"
+                      class="transition-[duration]-[1000ms] max-w-xs transform-gpu transition-all hover:-translate-y-1"
+                    />
+                  </NuxtLink>
+                </div> -->
           </div>
         </aside>
       </div>
@@ -61,6 +73,15 @@
 
 <script lang="ts" setup>
   import { useActiveScroll } from "vue-use-active-scroll";
+
+  useHead({
+    script: [
+      {
+        type: "module",
+        src: "https://get.microsoft.com/badge/ms-store-badge.bundled.js",
+      },
+    ],
+  });
 
   const $route = useRoute();
 
@@ -81,4 +102,50 @@
     replaceHash: true,
     overlayHeight: 80,
   });
+
+  const downloads = [
+    {
+      title: "Microsoft Store",
+      description: "Cider is available on the Microsoft Store for Windows 10 and 11 users",
+      isRecommended: false,
+      price: 20,
+      perks: [
+        "Windows 10 and 11 Support",
+        "Windows specific features",
+        "Automatic Updates",
+        "Discord, Spotify, Last.FM Integrations",
+        "Audio Enhancement (Cider Audio)",
+        "Cider Remote Support",
+        "Blazingly Fast",
+        "Tons of Customization Options",
+        "Community Plugins",
+        "Community Themes",
+      ],
+      download: {
+        html: '<ms-store-badge productid="9PL8WPH0QK9M" window-mode="popup" theme="auto" language="en-us" animation="on" class="w-full"> </ms-store-badge>',
+      },
+    },
+    {
+      title: "Itch.io",
+      description: "Cider is available on Itch.io for ALL users on Windows, macOS, and Linux",
+      price: 20,
+      isRecommended: true,
+      perks: [
+        "One download for all platforms",
+        "Multi-platform support",
+        "More frequent updates",
+        "Discord, Spotify, Last.FM Integrations",
+        "Audio Enhancement (Cider Audio)",
+        "Cider Remote Support",
+        "Blazingly Fast",
+        "Tons of Customization Options",
+        "Community Plugins",
+        "Community Themes",
+      ],
+      download: {
+        url: "https://cidercollective.itch.io/cider",
+        image: "/itchio-color.svg",
+      },
+    },
+  ];
 </script>

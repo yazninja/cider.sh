@@ -38,7 +38,10 @@
     "typescript": "^5.4.5"
   },
   "trustedDependencies": [
-    "@morev/vue-transitions"
+    "@morev/vue-transitions",
+    "esbuild",
+    "sharp",
+    "vue-demi"
   ],
   "packageManager": "pnpm@9.0.6+sha1.648f6014eb363abb36618f2ba59282a9eeb3e879"
 }

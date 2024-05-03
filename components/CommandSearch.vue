@@ -6,12 +6,35 @@
         Search the documentation for components, utilities, and more.
       </UiDialogDescription>
 
-      <UiCommandInput placeholder="Search..." />
+      <!-- <UiCommandInput placeholder="Search..." /> -->
+      <UiVeeInput
+        v-model="search"
+        placeholder="Search..."
+        icon="mdi:search"
+        class="border-none focus:border-none"
+      />
 
-      <UiCommandList class="bg-background">
-        <UiScrollArea class="h-[300px] w-full">
+      <UiCommandList class="mt-2 bg-background">
+        <UiScrollArea class="h-[400px] w-full">
           <UiCommandEmpty>No results found.</UiCommandEmpty>
-          <template v-for="(nav, i) in navigation" :key="i">
+          <template v-if="results" v-for="res in results.value">
+            <NuxtLink :to="res.id">
+              <div class="m-2 rounded border p-4" @click="localModel = false">
+                <div>
+                  <span class="text-sm font-bold text-foreground" v-for="t in res.titles" :key="t">
+                    {{ t }} <Icon name="mdi:chevron-right" />
+                  </span>
+                </div>
+                <h1 class="text-lg font-bold text-foreground text-primary">{{ res.title }}</h1>
+                <div
+                  class="text-xs text-foreground/80"
+                  v-html="surroundingText(res.content, search)"
+                ></div>
+              </div>
+            </NuxtLink>
+          </template>
+
+          <!-- <template v-for="(nav, i) in navigation" :key="i">
             <UiCommandGroup :heading="nav.title">
               <UiCommandItem
                 v-for="(child, k) in nav.children"
@@ -31,7 +54,7 @@
                 }}</UiBadge>
               </UiCommandItem>
             </UiCommandGroup>
-          </template>
+          </template> -->
           <UiCommandGroup heading="Theme">
             <UiCommandItem
               v-for="(mode, i) in modes"
@@ -79,4 +102,37 @@
     colorMode.preference = val;
     localModel.value = false;
   };
+  const search = ref("");
+  const results: any = ref(null);
+  watch(search, async () => {
+    if (search.value.length > 0) {
+      results.value = await searchContent(search.value);
+    } else {
+      results.value = null;
+    }
+  });
+  // console.log(results);
+
+  function surroundingText(content: string, term: string) {
+    const SURROUND_FACTOR = 100;
+    const index = content.indexOf(term);
+    let start = index > SURROUND_FACTOR ? index - SURROUND_FACTOR : 0;
+    let end = index < content.length - SURROUND_FACTOR ? index + SURROUND_FACTOR : content.length;
+    let text = content.slice(start, end);
+
+    if (start > 0) {
+      text = `...${text}`;
+    }
+    if (end < content.length) {
+      text = `${text}...`;
+    }
+    // highlight the search term
+
+    text = text.replace(
+      new RegExp(term, "gi"),
+      `<span class="bg-yellow-300 dark:bg-yellow-600 text-foreground font-bold">${term}</span>`
+    );
+
+    return text;
+  }
 </script>

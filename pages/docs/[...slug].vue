@@ -47,7 +47,7 @@
   const $route = useRoute();
 
   const { data: page } = await useAsyncData("page-data", () => queryContent($route.path).findOne());
-  const { data: navigation } = await useAsyncData("navigation", () =>
+  const { data: navigation } = await useAsyncData("docs-navigation", () =>
     fetchContentNavigation({ where: [{ _path: { $icontains: "/docs" } }] })
   );
 

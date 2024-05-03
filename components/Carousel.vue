@@ -5,7 +5,8 @@
       <NuxtImg
         v-for="(image, index) in props.images"
         :src="image"
-        :key="image"
+        :key="index"
+        format="webp"
         :class="`carousel-image ${getImageClass(index)}`"
         @click="index === (currentIndex - 1 + imageCount) % imageCount ? goToPrev() : goToNext()"
       />

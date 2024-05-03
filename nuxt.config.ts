@@ -15,7 +15,7 @@ export default defineNuxtConfig({
     "@morev/vue-transitions/nuxt",
     "@nuxt/content",
     "nuxt-swiper",
-    "@nuxt/image"
+    "@nuxt/image",
   ],
   content: {
     ignores: ["/1.client-releases/images", "\\.html$", "CNAME"],
@@ -56,7 +56,7 @@ export default defineNuxtConfig({
         prefix: "/docs",
         driver: "github",
         repo: "ciderapp/cider-docs",
-        branch: "main",
+        branch: "nuxt",
         dir: "/",
       },
       changelogs: {
@@ -70,12 +70,13 @@ export default defineNuxtConfig({
   },
   routeRules: {
     "/": { prerender: true },
-    "/downloads": { prerender: true },
+    "/downloads": { redirect: "/downloads/client" },
+    "/downloads/client": { prerender: true },
     "/changelogs": { prerender: true },
     "/changelogs/**": { isr: 60 },
-    "/docs": { redirect: "/docs/summary" },
+    "/docs": { redirect: "/docs/other/rpc" },
     "/docs/**": { isr: 60 },
-    "/remote": { prerender: true },
+    "/downloads/remote": { prerender: true },
     "/marketplace": { redirect: "https://marketplace.cider.sh" },
     "/o": { redirect: "/api/v1/open" },
     "/p": { redirect: "/api/v1/play" },

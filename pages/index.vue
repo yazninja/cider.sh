@@ -123,11 +123,7 @@
     isUwu.value = true;
   }
 
-  let images = [
-    "/client-images/immersive.png",
-    "/client-images/comfy.png",
-    "/client-images/compact.png",
-  ];
+  let images = ["/client-immersive.png", "/client-comfy.png", "/client-compact.png"];
   const features = [
     {
       icon: "heroicons:link",
