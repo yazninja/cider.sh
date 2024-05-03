@@ -1,7 +1,21 @@
 <template>
   <div class="flex flex-col">
+    <div v-if="embedded" class="prose prose-lg prose-rose dark:prose-invert">
+      <div v-if="page?.image">
+        <NuxtImg
+          :src="
+            'https://github.com/ciderapp/changes/blob/main/1.client-releases/images/' +
+            page.image +
+            '?raw=true'
+          "
+          :alt="page.title"
+          class="mb-5 w-full overflow-hidden rounded-md border border-foreground/60 object-cover shadow-lg"
+        />
+      </div>
+      <LazyContentDoc />
+    </div>
     <!-- Main content -->
-    <main class="container grid grid-cols-1 lg:grid-cols-[290px_minmax(0,1fr)] lg:gap-10">
+    <main v-else class="container grid grid-cols-1 lg:grid-cols-[290px_minmax(0,1fr)] lg:gap-10">
       <!-- Left sidebar with page links -->
       <div
         class="sticky top-14 z-20 hidden h-[calc(100dvh-57px)] border-r text-card-foreground lg:block"
@@ -84,7 +98,7 @@
   });
 
   const $route = useRoute();
-
+  const embedded = $route.query.embedded == "true";
   const { data: page } = await useAsyncData("page-data", () => queryContent($route.path).findOne());
 
   const { data } = await useAsyncData<any>("changelogs", () =>
