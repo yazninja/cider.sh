@@ -74,7 +74,7 @@ export default defineNuxtConfig({
     "/downloads/client": { prerender: true },
     "/changelogs": { prerender: true },
     "/changelogs/**": { isr: 60 },
-    "/docs": { redirect: "/docs/summary" },
+    "/docs": { redirect: "/docs/other/rpc" },
     "/docs/**": { isr: 60 },
     "/downloads/remote": { prerender: true },
     "/marketplace": { redirect: "https://marketplace.cider.sh" },
