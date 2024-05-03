@@ -56,7 +56,7 @@ export default defineNuxtConfig({
         prefix: "/docs",
         driver: "github",
         repo: "ciderapp/cider-docs",
-        branch: "main",
+        branch: "nuxt",
         dir: "/",
       },
       changelogs: {
@@ -76,7 +76,7 @@ export default defineNuxtConfig({
     "/docs": { redirect: "/docs/summary" },
     "/docs/**": { isr: 60 },
     "/remote": { prerender: true },
-    "/marketplace": { redirect: "https://marketplace.cider.sh" },
+    "/marketplace": { proxy: "https://marketplace.cider.sh" },
     "/o": { redirect: "/api/v1/open" },
     "/p": { redirect: "/api/v1/play" },
   },
